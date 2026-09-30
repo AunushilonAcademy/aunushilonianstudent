@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aunushilonian — the community of current and former students of Aunushilon Academy, together with teachers. Learn, Grow, Inspire.">
+  <title>Aunushilonian | Learn • Grow • Inspire</title>
+
+  <style>
+    :root{
+      --green:#0b5d2a;
+      --green2:#0f7a39;
+      --light:#f4fbf6;
+      --gold:#f4c542;
+      --dark:#092015;
+      --muted:#617267;
+      --white:#fff;
+      --shadow:0 14px 40px rgba(7,45,22,.12);
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,Arial,Helvetica,sans-serif;
+      color:var(--dark);
+      background:#fff;
+      line-height:1.65;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    .container{width:min(1120px,92%);margin:auto}
+
+    header{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:1000;
+      background:rgba(255,255,255,.90);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(11,93,42,.10);
+    }
+    .nav{
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .brand{
+      font-weight:900;
+      letter-spacing:1.2px;
+      color:var(--green);
+      font-size:1.15rem;
+    }
+    .brand span{color:#8ba88f}
+    nav ul{list-style:none;display:flex;gap:24px;align-items:center}
+    nav a{font-weight:700;font-size:.92rem;color:#26402f}
+    nav a:hover{color:var(--green2)}
+
+    .menu-btn{
+      display:none;
+      border:0;background:transparent;
+      font-size:1.6rem;cursor:pointer;color:var(--green);
+    }
+
+    .hero{
+      min-height:92vh;
+      padding-top:76px;
+      display:grid;
+      place-items:center;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg,rgba(5,35,16,.05),rgba(5,35,16,.72)),
+        url("school.jpg") center/cover no-repeat;
+    }
+    .hero-content{
+      width:min(900px,92%);
+      text-align:center;
+      color:white;
+      padding:80px 0;
+    }
+    .eyebrow{
+      display:inline-block;
+      padding:7px 14px;
+      border:1px solid rgba(255,255,255,.45);
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      backdrop-filter:blur(8px);
+      font-weight:800;
+      letter-spacing:1px;
+      font-size:.78rem;
+      text-transform:uppercase;
+    }
+    .hero h1{
+      font-size:clamp(3rem,9vw,7rem);
+      line-height:.95;
+      margin:20px 0 18px;
+      letter-spacing:2px;
+      text-shadow:0 5px 30px rgba(0,0,0,.3);
+    }
+    .hero h1 span{color:#d8f7df}
+    .hero p{
+      max-width:720px;
+      margin:auto;
+      font-size:clamp(1rem,2vw,1.25rem);
+      color:#f2fff5;
+    }
+    .buttons{
+      margin-top:30px;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    .btn{
+      padding:13px 22px;
+      border-radius:999px;
+      font-weight:900;
+      transition:.2s;
+      display:inline-block;
+    }
+    .btn-primary{background:white;color:var(--green)}
+    .btn-outline{border:1px solid rgba(255,255,255,.65);color:white;background:rgba(255,255,255,.08)}
+    .btn:hover{transform:translateY(-2px)}
+
+    section{padding:90px 0}
+    .section-head{text-align:center;max-width:760px;margin:0 auto 42px}
+    .section-head .tag{
+      color:var(--green2);
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:.75rem;
+    }
+    .section-head h2{
+      font-size:clamp(2rem,5vw,3.3rem);
+      margin:8px 0 12px;
+      line-height:1.1;
+    }
+    .section-head p{color:var(--muted)}
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:28px;
+      align-items:stretch;
+    }
+    .card{
+      background:white;
+      border:1px solid #e5eee8;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:30px;
+    }
+    .card h3{font-size:1.35rem;margin-bottom:10px;color:var(--green)}
+    .card p{color:var(--muted)}
+
+    .facts{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:22px;
+    }
+    .fact{
+      padding:17px;
+      border-radius:16px;
+      background:var(--light);
+    }
+    .fact strong{display:block;font-size:1.25rem;color:var(--green)}
+    .fact small{color:var(--muted)}
+
+    .activities{
+      background:var(--light);
+    }
+    .activity-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .activity{
+      padding:28px;
+      border-radius:20px;
+      background:#fff;
+      border:1px solid #e1eee5;
+      transition:.2s;
+    }
+    .activity:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .icon{
+      width:50px;height:50px;
+      display:grid;place-items:center;
+      border-radius:15px;
+      background:#e5f6e9;
+      font-size:1.45rem;
+      margin-bottom:18px;
+    }
+    .activity h3{margin-bottom:8px;color:var(--green)}
+    .activity p{color:var(--muted);font-size:.95rem}
+
+    .results-wrap{
+      overflow-x:auto;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      border:1px solid #e3ebe5;
+    }
+    table{width:100%;border-collapse:collapse;background:white;min-width:520px}
+    th,td{padding:18px;text-align:left;border-bottom:1px solid #e8eee9}
+    th{background:var(--green);color:white}
+    tr:last-child td{border-bottom:0}
+    td strong{color:var(--green)}
+
+    .science{
+      background:linear-gradient(135deg,#06351a,#0d6b31);
+      color:white;
+    }
+    .science .section-head p{color:#d8eee0}
+    .science .tag{color:#b9f3c9}
+    .science-box{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:25px;
+      align-items:center;
+      padding:35px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.08);
+      border-radius:24px;
+    }
+    .science-box h3{font-size:2rem;margin-bottom:8px}
+    .science-box p{color:#d8eee0}
+    .science-btn{background:white;color:var(--green)}
+
+    .quote{
+      text-align:center;
+      padding:70px 20px;
+    }
+    .quote blockquote{
+      font-size:clamp(1.6rem,4vw,2.6rem);
+      font-weight:900;
+      line-height:1.2;
+      max-width:850px;
+      margin:auto;
+      color:var(--green);
+    }
+    .quote p{margin-top:15px;color:var(--muted)}
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .social{
+      display:block;
+      padding:24px;
+      border-radius:20px;
+      border:1px solid #e1eee5;
+      background:white;
+      box-shadow:0 8px 24px rgba(7,45,22,.07);
+    }
+    .social strong{color:var(--green);display:block;margin-bottom:5px}
+    .social span{font-size:.9rem;color:var(--muted)}
+
+    footer{
+      background:#06180d;
+      color:#bcd0c2;
+      padding:35px 0;
+      text-align:center;
+    }
+    footer strong{color:white}
+    .footer-links{
+      margin:12px 0;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:18px;
+    }
+    .footer-links a:hover{color:white}
+
+    @media(max-width:850px){
+      nav ul{
+        display:none;
+        position:absolute;
+        top:76px;left:0;right:0;
+        background:white;
+        padding:20px 6%;
+        flex-direction:column;
+        align-items:flex-start;
+        border-bottom:1px solid #e5eee8;
+      }
+      nav ul.show{display:flex}
+      .menu-btn{display:block}
+      .about-grid,.science-box{grid-template-columns:1fr}
+      .activity-grid{grid-template-columns:1fr 1fr}
+      .contact-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:560px){
+      section{padding:65px 0}
+      .hero{min-height:86vh;overflow:hidden}
+      .hero-content{width:92%;max-width:100%;overflow:hidden}
+      .hero h1{
+        font-size:clamp(2.2rem,10vw,3.2rem);
+        letter-spacing:1px;
+        line-height:1;
+        white-space:nowrap;
+      }
+      .hero p{
+        width:100%;
+        max-width:100%;
+        font-size:1rem;
+        line-height:1.6;
+        overflow-wrap:break-word;
+      }
+      .buttons{width:100%}
+      .btn{font-size:.9rem;padding:12px 18px}
+      .activity-grid{grid-template-columns:1fr}
+      .facts{grid-template-columns:1fr 1fr}
+      .card{padding:22px}
+      .brand{font-size:.95rem}
+      .brand span{display:none}
+    }
+
+    @media(max-width:380px){
+      .hero h1{font-size:2.05rem}
+      .hero p{font-size:.92rem}
+      .buttons{flex-direction:column;align-items:stretch}
+      .btn{text-align:center}
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">AUNUSHILONIAN <span>• Community</span></a>
+    <button class="menu-btn" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+    <nav>
+      <ul id="navList">
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        <li><a href="#activities" onclick="closeMenu()">What We Do</a></li>
+        <li><a href="#results" onclick="closeMenu()">SSC Results</a></li>
+        <li><a href="#science" onclick="closeMenu()">Science Quest</a></li>
+        <li><a href="#connect" onclick="closeMenu()">Connect</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="eyebrow">A Community of Aunushilon Academy</span>
+      <h1>AUNUSHILONIAN</h1>
+      <p>
+        A growing community of current and former students, together with teachers,
+        connected by learning, friendship, creativity and the spirit of Aunushilon.
+      </p>
+      <div class="buttons">
+        <a class="btn btn-primary" href="https://www.facebook.com/share/g/1K2RgnorAQ/" target="_blank">Join the Group</a>
+        <a class="btn btn-outline" href="#about">Explore Community</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div class="tag">Our Story</div>
+        <h2>More Than a School Community</h2>
+        <p>
+          Aunushilonian brings together generations of Aunushilon Academy students
+          and teachers in one connected community.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="card">
+          <h3>Who Are Aunushilonians?</h3>
+          <p>
+            Aunushilonians are the students and alumni of Aunushilon Academy,
+            along with teachers who remain connected to the community. The goal is
+            to keep the bond between generations alive and create opportunities to
+            learn, share, collaborate and inspire one another.
+          </p>
+
+          <div class="facts">
+            <div class="fact"><strong>1996</strong><small>Academy established</small></div>
+            <div class="fact"><strong>131277</strong><small>EIIN</small></div>
+            <div class="fact"><strong>25+</strong><small>Teachers</small></div>
+            <div class="fact"><strong>Play–10</strong><small>Classes</small></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Aunushilon Academy</h3>
+          <p>
+            Aunushilon Academy is located in Bheola Manik Char, Chakaria, Cox's Bazar.
+            It was established in 1996 and is identified by EIIN 131277.
+            The Head Teacher is Shofiqul Alam.
+          </p>
+          <br>
+          <p>
+            Aunushilonian is built around the idea that the relationship with a
+            school does not end after graduation — it continues through community,
+            contribution and shared memories.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="activities" id="activities">
+    <div class="container">
+      <div class="section-head">
+        <div class="tag">Community</div>
+        <h2>What Aunushilonians Do</h2>
+        <p>
+          A platform for students, alumni and teachers to stay connected and
+          create meaningful opportunities together.
+        </p>
+      </div>
+
+      <div class="activity-grid">
+        <article class="activity">
+          <div class="icon">🎓</div>
+          <h3>Academic Support</h3>
+          <p>Sharing study resources, guidance, useful notes and learning opportunities among different generations.</p>
+        </article>
+
+        <article class="activity">
+          <div class="icon">🔬</div>
+          <h3>Science & Innovation</h3>
+          <p>Encouraging curiosity, scientific thinking, problem solving and participation in science-focused activities.</p>
+        </article>
+
+        <article class="activity">
+          <div class="icon">✍️</div>
+          <h3>Creative Expression</h3>
+          <p>Creating space for poems, stories, essays, science fiction and other original student work.</p>
+        </article>
+
+        <article class="activity">
+          <div class="icon">🤝</div>
+          <h3>Alumni Connection</h3>
+          <p>Connecting current students, former students and teachers so experiences and opportunities can be shared.</p>
+        </article>
+
+        <article class="activity">
+          <div class="icon">🏆</div>
+          <h3>Competitions</h3>
+          <p>Supporting educational competitions and challenges that help students think, compete and grow.</p>
+        </article>
+
+        <article class="activity">
+          <div class="icon">🌱</div>
+          <h3>Community Initiatives</h3>
+          <p>Building positive initiatives around education, student development, creativity and the school community.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="results">
+    <div class="container">
+      <div class="section-head">
+        <div class="tag">Academic Record</div>
+        <h2>SSC A+ Results</h2>
+        <p>Number of A+ achievers reported by the Aunushilonian community for recent SSC years.</p>
+      </div>
+
+      <div class="results-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>A+ Achievers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>2026</td><td><strong>11</strong></td></tr>
+            <tr><td>2025</td><td><strong>11</strong></td></tr>
+            <tr><td>2024</td><td><strong>17</strong></td></tr>
+            <tr><td>2023</td><td><strong>20</strong></td></tr>
+            <tr><td>2022</td><td><strong>38</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="science" id="science">
+    <div class="container">
+      <div class="section-head">
+        <div class="tag">Aunushilonian Initiative</div>
+        <h2>SCIENCE QUEST</h2>
+        <p>Explore. Think. Compete.</p>
+      </div>
+
+      <div class="science-box">
+        <div>
+          <h3>Think Beyond the Classroom.</h3>
+          <p>
+            Science Quest is an educational initiative operated by Aunushilonians,
+            created to encourage scientific curiosity, logical thinking and healthy competition.
+          </p>
+        </div>
+        <a class="btn science-btn" href="https://www.facebook.com/share/1B24CADBye/" target="_blank">Visit Science Quest</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote">
+    <div class="container">
+      <blockquote>
+        “The school may be where the journey begins, but the Aunushilonian bond continues beyond the classroom.”
+      </blockquote>
+      <p>Learn • Grow • Inspire</p>
+    </div>
+  </section>
+
+  <section id="connect">
+    <div class="container">
+      <div class="section-head">
+        <div class="tag">Stay Connected</div>
+        <h2>Be Part of Aunushilonian</h2>
+        <p>Follow the community, join the group and stay connected with Aunushilonians.</p>
+      </div>
+
+      <div class="contact-grid">
+        <a class="social" href="https://www.facebook.com/share/g/1K2RgnorAQ/" target="_blank">
+          <strong>Community Group →</strong>
+          <span>Join the Aunushilonian Facebook group.</span>
+        </a>
+
+        <a class="social" href="https://www.facebook.com/share/1J1hYU2ALC/" target="_blank">
+          <strong>Aunushilonian Page →</strong>
+          <span>Follow the official community page.</span>
+        </a>
+
+        <a class="social" href="https://www.facebook.com/share/1B24CADBye/" target="_blank">
+          <strong>Science Quest →</strong>
+          <span>Explore the Science Quest initiative.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <strong>AUNUSHILONIAN</strong>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#activities">What We Do</a>
+      <a href="#results">SSC Results</a>
+      <a href="#science">Science Quest</a>
+      <a href="#connect">Connect</a>
+    </div>
+    <p>© 2026 Aunushilonian Community. Learn • Grow • Inspire.</p>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(){
+    document.getElementById("navList").classList.toggle("show");
+  }
+  function closeMenu(){
+    document.getElementById("navList").classList.remove("show");
+  }
+</script>
+
+</body>
+</html>
